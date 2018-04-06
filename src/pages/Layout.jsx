@@ -13,7 +13,7 @@ import Divider from "@material-ui/core/Divider";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import Icon from "@material-ui/core/Icon";
-import Button from "@material-ui/core/Button";
+import AuthButtons from '../components/AuthButtons.jsx'
 
 import { sidebarListItems } from "../components/sidebarListItems.jsx";
 
@@ -22,32 +22,19 @@ import baseStyle from "../assets/jss/baseStyle.jsx";
 class Layout extends React.Component {
   state = {
     mobileOpen: false,
-    auth: true,
+    auth: false,
     anchorEl: null
   };
 
   handleDrawerToggle = () => {
     this.setState({ mobileOpen: !this.state.mobileOpen });
   };
-  
-  handleChange = (event, checked) => {
-    this.setState({ auth: checked });
-  };
 
-  handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
 
   render() {
     const { classes, theme } = this.props;
-    const { auth, anchorEl } = this.state;
-    console.log(auth);
+    const {auth} = this.state;
     
-    const open = Boolean(anchorEl);
 
     const drawer = (
       <div>
@@ -75,39 +62,10 @@ class Layout extends React.Component {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="title" color="inherit" noWrap>
+              <Typography variant="title" color="inherit" noWrap className={classes.flex}>
                 Talon
               </Typography>
-              {/* {auth && ( */}
-                <div>
-                  <IconButton
-                    // aria-owns={open ? "menu-appbar" : null}
-                    aria-haspopup="true"
-                    onClick={this.handleMenu}
-                    color="inherit"
-                  >
-                    <Icon>account-circle</Icon>
-                  </IconButton>
-                  {/* <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right"
-                    }}
-                    transformOrigin={{
-                      vertical: "top",
-                      horizontal: "right"
-                    }}
-                    open={open}
-                    onClose={this.handleClose}
-                  >
-                    <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                  </Menu> */}
-                </div>
-              {/* )} */}
-              <Button color="inherit">Login</Button>
+              <AuthButtons auth ={auth} />
             </Toolbar>
           </AppBar>
           <Hidden mdUp>
