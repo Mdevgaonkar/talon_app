@@ -10,6 +10,9 @@ const baseStyle = theme => ({
     width: "100%",
     height: "100%"
   },
+  flex:{
+    flex:1
+  },
   appBar: {
     position: "absolute",
     marginLeft: drawerWidth,
@@ -40,7 +43,8 @@ const baseStyle = theme => ({
   activeItem: {
     backgroundColor: theme.palette.primary[100]
   },
-  item: {}
+  item: {},
+  
 });
 
 export default baseStyle;
