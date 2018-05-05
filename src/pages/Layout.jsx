@@ -1,28 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
-import IconButton from "@material-ui/core/IconButton";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
+
 import Typography from "@material-ui/core/Typography";
 import Drawer from "@material-ui/core/Drawer";
 import MenuList from "@material-ui/core/MenuList";
 import Hidden from "@material-ui/core/Hidden";
 import Divider from "@material-ui/core/Divider";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import Icon from "@material-ui/core/Icon";
-import AuthButtons from '../components/AuthButtons.jsx'
+
+import Appbar from "../components/Appbar.jsx";
 
 import { sidebarListItems } from "../components/sidebarListItems.jsx";
 
 import baseStyle from "../assets/jss/baseStyle.jsx";
+import { Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 class Layout extends React.Component {
   state = {
     mobileOpen: false,
-    auth: false,
+    auth: true,
     anchorEl: null
   };
 
@@ -30,11 +27,9 @@ class Layout extends React.Component {
     this.setState({ mobileOpen: !this.state.mobileOpen });
   };
 
-
   render() {
     const { classes, theme } = this.props;
-    const {auth} = this.state;
-    
+    const { auth } = this.state;
 
     const drawer = (
       <div>
@@ -52,22 +47,8 @@ class Layout extends React.Component {
     return (
       <div className={classes.root}>
         <div>
-          <AppBar className={classes.appBar}>
-            <Toolbar>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={this.handleDrawerToggle}
-                className={classes.navIconHide}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography variant="title" color="inherit" noWrap className={classes.flex}>
-                Talon
-              </Typography>
-              <AuthButtons auth ={auth} />
-            </Toolbar>
-          </AppBar>
+          <Appbar handleDrawerToggle={this.handleDrawerToggle} auth={auth}>
+          </Appbar>
           <Hidden mdUp>
             <Drawer
               variant="temporary"
