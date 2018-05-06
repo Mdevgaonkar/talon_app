@@ -33,11 +33,16 @@ class Layout extends React.Component {
 
     const drawer = (
       <div>
+        <div className={classes.toolbarIe11}>
         <div className={classes.toolbar}>
-          <Typography variant="title" color="inherit" noWrap>
-            Responsive drawer
-          </Typography>
+          <Link className={classes.toolbartitle} to="/" style={{ textDecoration: 'none' }} >
+            <Typography variant="title" color="inherit">
+              Brand Name
+            </Typography>
+          </Link>
+          <Typography className={classes.anchor} variant="caption">Brand caption</Typography>
         </div>
+      </div>
         <Divider />
         <MenuList>{sidebarListItems(this.props.drawerItemSelected)}</MenuList>
         <Divider />
