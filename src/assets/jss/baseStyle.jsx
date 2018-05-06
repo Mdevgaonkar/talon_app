@@ -14,10 +14,11 @@ const baseStyle = theme => ({
     flex:1
   },
   appBar: {
-    position: "absolute",
+    position: 'absolute',
     marginLeft: drawerWidth,
-    zIndex: theme.zIndex.drawer + 1
-    
+    [theme.breakpoints.up('md')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
   },
   menuButton: {
     marginLeft: -12,
@@ -28,7 +29,25 @@ const baseStyle = theme => ({
       display: "none"
     }
   },
-  toolbar: theme.mixins.toolbar,
+  toolbarIe11: {
+    display: 'flex',
+  },
+  toolbar: {
+    ...theme.mixins.toolbar,
+    paddingLeft: theme.spacing.unit * 3,
+    display: 'flex',
+    flexGrow: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  toolbartitle: {
+    color: theme.palette.text.secondary,
+    marginBottom: theme.spacing.unit / 2,
+    '&:hover': {
+      color: theme.palette.primary.main,
+    },
+  },
   drawerPaper: {
     width: drawerWidth,
     [theme.breakpoints.up("md")]: {
