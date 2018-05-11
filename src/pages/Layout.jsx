@@ -8,11 +8,11 @@ import MenuList from "@material-ui/core/MenuList";
 import Hidden from "@material-ui/core/Hidden";
 import Divider from "@material-ui/core/Divider";
 
-import Appbar from "../components/Appbar.jsx";
+import Appbar from "../components/Appbar";
 
-import { sidebarListItems } from "../components/sidebarListItems.jsx";
+import { sidebarListItems } from "../components/sidebarListItems";
 
-import baseStyle from "../assets/jss/baseStyle.jsx";
+import baseStyle from "../assets/jss/baseStyle";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
