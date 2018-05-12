@@ -1,5 +1,5 @@
-import Home from "../pages/Home.jsx";
-import Inbox from "../pages/Inbox.jsx"
+import Home from "../pages/Home";
+import Inbox from "../pages/Inbox"
 
 
 var indexRoutes = [
