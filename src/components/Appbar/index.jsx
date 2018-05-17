@@ -12,7 +12,9 @@ import baseStyle from '../../assets/jss/baseStyle';
 const styles = baseStyle;
 
 class Appbar extends React.Component {
-  
+  state = {
+    title : this.props.title
+  }
 
   
 
@@ -22,8 +24,6 @@ class Appbar extends React.Component {
     
     return (
       <div >
-        
-        
         <AppBar className={classes.appBar}>
             <Toolbar>
               <IconButton
@@ -35,7 +35,7 @@ class Appbar extends React.Component {
                 <MenuIcon />
               </IconButton>
               <Typography variant="title" color="inherit" noWrap className={classes.flex}>
-                Talon
+                {this.state.title}
               </Typography>
               {this.props.children}
               <AuthButtons auth ={auth} />
@@ -48,6 +48,7 @@ class Appbar extends React.Component {
 
 Appbar.propTypes = {
   classes: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(Appbar);

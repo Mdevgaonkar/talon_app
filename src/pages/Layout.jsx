@@ -52,7 +52,7 @@ class Layout extends React.Component {
     return (
       <div className={classes.root}>
         <div>
-          <Appbar handleDrawerToggle={this.handleDrawerToggle} auth={auth}>
+          <Appbar title ={this.props.title}handleDrawerToggle={this.handleDrawerToggle} auth={auth}>
           </Appbar>
           <Hidden mdUp>
             <Drawer
@@ -94,7 +94,8 @@ class Layout extends React.Component {
 
 Layout.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default withStyles(baseStyle, { withTheme: true })(Layout);

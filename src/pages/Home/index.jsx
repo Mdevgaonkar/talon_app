@@ -14,7 +14,7 @@ class Home extends React.Component {
       render() {
         const { classes, theme } = this.props;
         return (
-          <Layout drawerItemSelected = 'Dashboard'>
+          <Layout drawerItemSelected = 'Dashboard' title='Dashboard' >
               <Typography noWrap>{'Hear me... and rejoice'}</Typography>
           </Layout>
         );
