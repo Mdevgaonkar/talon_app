@@ -9,12 +9,14 @@ import Layout from '../Layout.jsx'
 import HomeStyles from "./HomeStyles.jsx";
 
 class Home extends React.Component {
-    
+  state = {
+    auth : true
+  }
     
       render() {
         const { classes, theme } = this.props;
         return (
-          <Layout drawerItemSelected = 'Dashboard' title='Dashboard' >
+          <Layout drawerItemSelected = 'Dashboard' title='Dashboard' auth = {this.state.auth}>
               <Typography noWrap>{'Hear me... and rejoice'}</Typography>
           </Layout>
         );

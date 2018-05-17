@@ -19,7 +19,8 @@ import { Link } from "react-router-dom";
 class Layout extends React.Component {
   state = {
     mobileOpen: false,
-    auth: true,
+    auth: this.props.auth,
+    title: this.props.title,
     anchorEl: null
   };
 
@@ -29,7 +30,6 @@ class Layout extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-    const { auth } = this.state;
 
     const drawer = (
       <div>
@@ -52,7 +52,7 @@ class Layout extends React.Component {
     return (
       <div className={classes.root}>
         <div>
-          <Appbar title ={this.props.title}handleDrawerToggle={this.handleDrawerToggle} auth={auth}>
+          <Appbar title ={this.state.title} handleDrawerToggle={this.handleDrawerToggle} auth={this.state.auth}>
           </Appbar>
           <Hidden mdUp>
             <Drawer
@@ -95,7 +95,8 @@ class Layout extends React.Component {
 Layout.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  auth: PropTypes.bool.isRequired
 };
 
 export default withStyles(baseStyle, { withTheme: true })(Layout);

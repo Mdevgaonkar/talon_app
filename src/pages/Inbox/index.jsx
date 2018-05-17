@@ -9,7 +9,9 @@ import InboxStyles from "./InboxStyles";
 import Layout from '../Layout';
 
 class Inbox extends React.Component {
-    
+    state = {
+      auth : true
+    }
     
       render() {
         const { classes } = this.props;
@@ -17,7 +19,7 @@ class Inbox extends React.Component {
         
     
         return (
-          <Layout drawerItemSelected = 'Inbox'>
+          <Layout title='Inbox' drawerItemSelected = 'Inbox' auth = {this.state.auth}>
               <Typography noWrap>{'Welcome to inbox'}</Typography>
           </Layout>
         );

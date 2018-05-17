@@ -13,7 +13,8 @@ const styles = baseStyle;
 
 class Appbar extends React.Component {
   state = {
-    title : this.props.title
+    title : this.props.title,
+    auth:this.props.auth
   }
 
   
@@ -49,6 +50,7 @@ class Appbar extends React.Component {
 Appbar.propTypes = {
   classes: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
+  auth:PropTypes.bool.isRequired,
 };
 
 export default withStyles(styles)(Appbar);
