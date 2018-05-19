@@ -57,10 +57,16 @@ class AuthButtons extends React.Component {
               open={open}
               onClose={this.handleClose}
             >
-              <MenuItem onClick={this.handleClose} component={Link}
-            to="/login" >Profile</MenuItem>
-              <MenuItem onClick={this.handleClose} component={Link}
-            to="/logout" >Logout</MenuItem>
+              <MenuItem onClick={this.handleClose} component={Link} to="/login">
+                Profile
+              </MenuItem>
+              <MenuItem
+                onClick={this.handleClose}
+                component={Link}
+                to="/logout"
+              >
+                Logout
+              </MenuItem>
             </Menu>
           </div>
         ) : (
@@ -69,7 +75,7 @@ class AuthButtons extends React.Component {
             className={classes.menuButton}
             color="inherit"
             component={Link}
-            to="/login"
+            to="/"
           >
             Login
           </Button>
