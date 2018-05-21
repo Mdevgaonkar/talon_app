@@ -18,7 +18,6 @@ const authStyles = theme => ({
     },
     "&:before,&:after": {
       position: "absolute",
-      zIndex: "1",
       width: "100%",
       height: "100%",
       display: "block",
@@ -50,7 +49,7 @@ const authStyles = theme => ({
     rounded: true,
     borderRadius: "6px",
     padding: theme.spacing.unit * 5,
-    backgroundColor: "#9c27b0"
+    backgroundColor: theme.palette.primary.main
   },
   brandTitle: {
     textAlign: "center",
@@ -77,6 +76,16 @@ const authStyles = theme => ({
     height: "100%",
     lineHeight: "41px",
     fontSize: "30px"
+  },
+  getStartedButton: {
+    textAlign: "center"
+  },
+  button: {
+    margin: theme.spacing.unit
+  },
+  formMargin: {
+    margin: theme.spacing.unit,
+    textAlign: "center"
   }
 });
 export default authStyles;
