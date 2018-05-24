@@ -44,7 +44,7 @@ const authStyles = theme => ({
     // color: theme.palette.text.secondary
   },
   brand: {
-    width: 350,
+    width: 400,
     margin: "-40px 15px 0",
     rounded: true,
     borderRadius: "6px",
