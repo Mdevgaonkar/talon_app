@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import authStyle from "./authorizeStyles";
 import { Typography, Card, Icon, IconButton, Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 
 const image =
@@ -169,6 +170,8 @@ class Authorize extends React.Component {
                           variant="flat"
                           color="primary"
                           className={classes.button}
+                          component={Link}
+                          to="/home"
                         >
                           Get Started
                         </Button>
