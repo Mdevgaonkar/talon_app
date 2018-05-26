@@ -110,14 +110,14 @@ legend {
 }
 
 a {
-  color: #9c27b0;
+  color: #3f51b5;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover,
 a:focus {
-  color: #89229b;
+  color: #3f51b5;
   text-decoration: none;
 }
 
@@ -232,7 +232,7 @@ form {
   cursor: pointer;
   border-radius: 100%;
   transition: all 0.2s ease-out;
-  border: 1px solid #9c27b0;
+  border: 1px solid #3f51b5;
   background: #fff;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
@@ -257,7 +257,7 @@ form {
 }
 
 .noUi-connect {
-  background: #9c27b0;
+  background: #3f51b5;
   border-radius: 3px;
   -webkit-transition: background 450ms;
   transition: background 450ms;
@@ -446,11 +446,11 @@ form {
 
 .slider.slider-primary .noUi-connect,
 .slider.slider-primary.noUi-connect {
-  background-color: #9c27b0;
+  background-color: #3f51b5;
 }
 
 .slider.slider-primary .noUi-handle {
-  border-color: #9c27b0;
+  border-color: #3f51b5;
 }
 
 .slider.slider-info .noUi-connect,
@@ -517,7 +517,7 @@ form {
 
 .rdt input.form-control {
   border: 0;
-  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#D2D2D2, #D2D2D2);
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
   background-position: center bottom, center calc(100% - 1px);
@@ -541,7 +541,7 @@ form {
 
 .rdt input.form-control:focus {
   outline: none;
-  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#D2D2D2, #D2D2D2);
   background-size: 100% 2px, 100% 1px;
   box-shadow: none;
   transition-duration: 0.3s;
@@ -634,9 +634,9 @@ form {
 .rdtDay.rdtToday.rdtActive,
 .rdtDay.rdtActive,
 .rdtDay.rdtActive:hover {
-  background-color: #9c27b0 !important;
+  background-color: #3f51b5 !important;
   color: #fff;
-  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(156, 39, 176, 0.6);
+  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(63, 81, 181, 0.6);
 }
 
 .rdtDays tr .dow {
@@ -713,7 +713,7 @@ form {
 .rdtPicker th.rdtNext,
 .rdtPicker th.rdtPrev,
 .rdtPicker .rdtTimeToggle {
-  color: #9c27b0;
+  color: #3f51b5;
 }
 
 .rdtPrev span,
@@ -806,9 +806,9 @@ td.rdtYear:hover {
 }
 
 .rdtCounters .rdtCounter:last-child .rdtCount {
-  color: #9c27b0;
+  color: #3f51b5;
   border-radius: 50%;
-  border: 1px solid #9c27b0;
+  border: 1px solid #3f51b5;
 }
 
 .rdtCounterSeparator {
@@ -885,7 +885,7 @@ td.rdtYear:hover {
 .rdtMonths .rdtYear.rdtActive,
 .rdtYears .rdtMonth.rdtActive,
 .rdtYears .rdtYear.rdtActive {
-  background-color: #9c27b0 !important;
+  background-color: #3f51b5 !important;
   color: #fff;
 }
 
