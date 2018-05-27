@@ -4,12 +4,14 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import authStyle from "./authorizeStyles";
-import { Typography, Card, Icon, IconButton, Button } from "@material-ui/core";
+import { Typography, Card, Icon } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
+import IconButton from "../../components/CustomButtons/IconButton";
+import Button from "../../components/CustomButtons/Button";
 
-const image =
-  "https://cdn.pixabay.com/photo/2017/08/08/15/43/nature-2611771_960_720.jpg";
+import image from "../../assets/img/b2.jpg";
+
 class Authorize extends React.Component {
   state = {
     valid_pass: true,
@@ -66,9 +68,9 @@ class Authorize extends React.Component {
                       </Typography>
                       <div className={classes.socialLine}>
                         <IconButton
-                          href="#pablo"
+                          href="https://google.com"
                           target="_blank"
-                          color="transparent"
+                          color="twitter"
                           className={classes.socialIconButtons}
                           onClick={e => e.preventDefault()}
                         >
@@ -79,7 +81,7 @@ class Authorize extends React.Component {
                         <IconButton
                           href="#pablo"
                           target="_blank"
-                          color="transparent"
+                          color="facebook"
                           className={classes.socialIconButtons}
                           onClick={e => e.preventDefault()}
                         >
@@ -90,7 +92,7 @@ class Authorize extends React.Component {
                         <IconButton
                           href="#pablo"
                           target="_blank"
-                          color="transparent"
+                          color="google"
                           className={classes.socialIconButtons}
                           onClick={e => e.preventDefault()}
                         >
@@ -103,7 +105,7 @@ class Authorize extends React.Component {
                         <IconButton
                           href="#pablo"
                           target="_blank"
-                          color="transparent"
+                          color="microsoft"
                           className={classes.socialIconButtons}
                           onClick={e => e.preventDefault()}
                         >
