@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 // Material-ui components
 import Typography from "@material-ui/core/Typography";
-import { Button, Grid } from "@material-ui/core";
 
 // icons
 import InfoOutline from "@material-ui/icons/InfoOutline";
@@ -16,12 +15,17 @@ import CardHeader from "../../components/Card/CardHeader";
 import CardFooter from "../../components/Card/CardFooter";
 import CardIcon from "../../components/Card/CardIcon";
 import GridItem from "../../components/Grid/GridItem";
+import GridContainer from "../../components/Grid/GridContainer";
+import Button from "../../components/CustomButtons/Button";
 
 // import GridContainer from "../../components/Grid/GridContainer";
 
 import Layout from "../Layout.jsx";
 
 import HomeStyles from "./HomeStyles.jsx";
+
+// images
+import image from "../../assets/img/b2.jpg";
 
 class Home extends React.Component {
   state = {
@@ -30,15 +34,14 @@ class Home extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-    const image =
-      "https://cdn.pixabay.com/photo/2017/08/08/15/43/nature-2611771_960_720.jpg";
+    // const image = "assets/img/b2.jpg";
     return (
       <Layout
         drawerItemSelected="Dashboard"
         title="Dashboard"
         auth={this.state.auth}
       >
-        <Grid>
+        <GridContainer>
           <GridItem xs={12} sm={6} md={3}>
             <Card>
               <CardHeader color="danger" stats icon>
@@ -75,7 +78,7 @@ class Home extends React.Component {
               </CardBody>
             </Card>
           </GridItem>
-        </Grid>
+        </GridContainer>
       </Layout>
     );
   }
