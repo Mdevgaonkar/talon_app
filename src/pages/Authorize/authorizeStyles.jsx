@@ -75,7 +75,7 @@ const authStyles = theme => ({
     transform: "none",
     height: "100%",
     lineHeight: "41px",
-    fontSize: "30px"
+    fontSize: "24px"
   },
   getStartedButton: {
     textAlign: "center"
