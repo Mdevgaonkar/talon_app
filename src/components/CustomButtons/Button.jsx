@@ -56,7 +56,8 @@ RegularButton.propTypes = {
     "twitter",
     "google",
     "github",
-    "transparent"
+    "transparent",
+    "microsoft"
   ]),
   size: PropTypes.oneOf(["sm", "lg"]),
   simple: PropTypes.bool,
