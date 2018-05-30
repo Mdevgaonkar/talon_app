@@ -59,8 +59,41 @@ class Home extends React.Component {
               </CardFooter>
             </Card>
           </GridItem>
-          <GridItem xs={12} sm={12} md={6}>
-            <Card style={{ width: "20rem" }}>
+
+          <GridItem xs={12} sm={12} md={4}>
+            <Card>
+              <CardHeader color="primary">
+                <h4 className={classes.cardTitleDarkBg}>Types of Buttons</h4>
+              </CardHeader>
+              <CardBody>
+                <h4 className={classes.cardTitle}>Card title</h4>
+                <Typography>
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </Typography>
+                <GridItem xs={12} sm={4} md={4}>
+                  <Button simple color="microsoft">
+                    <i
+                      className="fab fa-microsoft"
+                      style={{ fontSize: "20px" }}
+                    />&nbsp;&nbsp;Connect with microsoft
+                  </Button>
+                </GridItem>
+                <GridItem xs={12} sm={4} md={3}>
+                  <Button simple color="twitter">
+                    <i
+                      className="fab fa-twitter"
+                      style={{ fontSize: "20px" }}
+                    />&nbsp; Connect with Twitter
+                  </Button>
+                </GridItem>
+              </CardBody>
+            </Card>
+          </GridItem>
+          {/* </GridContainer>
+        <GridContainer> */}
+          <GridItem xs={12} sm={12} md={5}>
+            <Card>
               <img
                 style={{ height: "180px", width: "100%", display: "block" }}
                 className={classes.imgCardTop}
