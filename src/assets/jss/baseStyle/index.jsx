@@ -14,7 +14,7 @@ const baseStyle = theme => ({
     flex: 1
   },
   appBar: {
-    position: "absolute",
+    position: "fixed",
     marginLeft: drawerWidth,
     [theme.breakpoints.up("md")]: {
       width: `calc(100% - ${drawerWidth}px)`
@@ -51,13 +51,16 @@ const baseStyle = theme => ({
   drawerPaper: {
     width: drawerWidth,
     [theme.breakpoints.up("md")]: {
-      position: "relative"
+      position: "fixed"
     }
   },
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3
+    padding: theme.spacing.unit * 3,
+    [theme.breakpoints.up("md")]: {
+      marginLeft: drawerWidth
+    }
   },
   activeItem: {
     backgroundColor: theme.palette.primary[100]
@@ -212,7 +215,7 @@ const infoCardHeader = {
 };
 const primaryCardHeader = {
   color: "#fff",
-  background: "linear-gradient(60deg, #ab47bc, #8e24aa)",
+  background: "linear-gradient(60deg, #3f51b5, #2036b4)",
   ...primaryBoxShadow
 };
 const roseCardHeader = {
@@ -252,6 +255,18 @@ const title = {
 };
 
 const cardTitle = {
+  ...title,
+  marginTop: ".625rem"
+};
+const titleDarkBg = {
+  color: "#000000",
+  margin: "1.75rem 0 0.875rem",
+  textDecoration: "none",
+  fontWeight: "700",
+  fontFamily: `"Roboto Slab", "Times New Roman", serif`
+};
+
+const cardTitleDarkBg = {
   ...title,
   marginTop: ".625rem"
 };
