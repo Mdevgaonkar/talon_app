@@ -11,12 +11,37 @@ import IconButton from "../../components/CustomButtons/IconButton";
 import Button from "../../components/CustomButtons/Button";
 
 import image from "../../assets/img/b2.jpg";
+import GridContainer from "../../components/Grid/GridContainer";
+
+// helper
+import { getAuth } from "../../helpers/auth";
 
 class Authorize extends React.Component {
   state = {
-    valid_pass: true,
-    valid_email: true
+    auth: false,
+    signInUrl: '',
+    accessToken: '',
+    user: ''
   };
+
+  componentDidMount = async () => {
+    let authObj =await  getAuth();
+    if (authObj.auth===false) {
+      //auth false
+      this.setState({auth: false});
+      this.setState({signInUrl: `${authObj.signInUrl}`});
+    } else if(authObj.auth === true){
+      this.setState({auth: true});
+      this.setState({accessToken: authObj.accessToken});
+      this.setState({user: authObj.user});
+      const { history } = this.props;
+      history.push("/home");
+    }else {
+      this.setState({auth: 'error'});
+      this.setState({signInUrl: 'Some Error Occured Please Retry!'});
+    }
+  };
+
   render() {
     const { classes, theme } = this.props;
     return (
@@ -29,161 +54,75 @@ class Authorize extends React.Component {
             backgroundPosition: "top center"
           }}
         >
-          <Grid container className={classes.root}>
-            <Grid item xs={12}>
-              <Grid
-                container
-                spacing={16}
-                className={classes.demo}
-                alignItems="center"
-                direction="row"
-                justify="center"
-              >
-                <Grid item>
-                  <Paper
-                    className={classes.content}
-                    style={{
-                      paddingTop: 10,
-                      paddingBottom: 20
-                    }}
-                  >
-                    <Card raised className={classes.brand}>
-                      <Typography
-                        className={classes.brandTitle}
-                        variant="headline"
-                        color="inherit"
-                        justify="center"
+          <GridContainer className={classes.root}>
+            <Grid
+              container
+              spacing={16}
+              className={classes.demo}
+              alignItems="center"
+              direction="row"
+              justify="center"
+            >
+              <Grid item>
+                <Paper
+                  className={classes.content}
+                  style={{
+                    paddingTop: 10,
+                    paddingBottom: 20
+                  }}
+                >
+                  <Card raised className={classes.brand}>
+                    <Typography
+                      className={classes.brandTitle}
+                      variant="headline"
+                      color="inherit"
+                      justify="center"
+                    >
+                      Mail Talon
+                    </Typography>
+                  </Card>
+
+                  <div className={classes.salutation}>
+                    <Typography
+                      variant="subheading"
+                      color="inherit"
+                      align="center"
+                    >
+                      Continue with
+                    </Typography>
+                    <div className={classes.socialLine}>
+                    
+                    {
+                      this.state.auth===false ? 
+                    
+                      <Button
+                        href={this.state.signInUrl}
+                        target="_blank"
+                        color="microsoft"
+                        // onClick={e => e.preventDefault()}
                       >
-                        Mail Talon
-                      </Typography>
-                    </Card>
-
-                    <div className={classes.salutation}>
-                      <Typography
-                        variant="subheading"
-                        color="inherit"
-                        align="center"
-                      >
-                        Continue with
-                      </Typography>
-                      <div className={classes.socialLine}>
-                        <IconButton
-                          href="https://google.com"
-                          target="_blank"
-                          color="twitter"
-                          className={classes.socialIconButtons}
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i
-                            className={classes.socialIcons + " fab fa-twitter"}
-                          />
-                        </IconButton>
-                        <IconButton
-                          href="#pablo"
-                          target="_blank"
-                          color="facebook"
-                          className={classes.socialIconButtons}
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i
-                            className={classes.socialIcons + " fab fa-facebook"}
-                          />
-                        </IconButton>
-                        <IconButton
-                          href="#pablo"
-                          target="_blank"
-                          color="google"
-                          className={classes.socialIconButtons}
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i
-                            className={
-                              classes.socialIcons + " fab fa-google-plus-g"
-                            }
-                          />
-                        </IconButton>
-                        <IconButton
-                          href="#pablo"
-                          target="_blank"
-                          color="microsoft"
-                          className={classes.socialIconButtons}
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i
-                            className={
-                              classes.socialIcons + " fab fa-microsoft"
-                            }
-                          />
-                        </IconButton>
-                      </div>
-                      <Typography
-                        variant="subheading"
-                        color="inherit"
-                        align="center"
-                      >
-                        Or
-                      </Typography>
-
-                      {/* <div className={classes.formMargin}> */}
-                      <div>
-                        <Grid
-                          container
-                          spacing={16}
-                          // className={classes.demo}
-                          alignItems="baseline"
-                        >
-                          <Grid item>
-                            <Icon color="action">email</Icon>
-                          </Grid>
-
-                          <Grid item xs="10">
-                            <TextField
-                              label="Email"
-                              placeholder="john.doe@example.com"
-                              fullWidth
-                              error={!this.state.valid_email}
-                            />
-                          </Grid>
-                        </Grid>
-                      </div>
-                      <div>
-                        <Grid
-                          container
-                          spacing={16}
-                          // className={classes.demo}
-                          alignItems="baseline"
-                        >
-                          <Grid item>
-                            <Icon color="action">lock</Icon>
-                          </Grid>
-
-                          <Grid item xs="10">
-                            <TextField
-                              label="Password"
-                              type="password"
-                              fullWidth
-                              error={!this.state.valid_pass}
-                            />
-                          </Grid>
-                        </Grid>
-                      </div>
-                      <div className={classes.getStartedButton}>
-                        <Button
-                          variant="flat"
-                          color="primary"
-                          className={classes.button}
-                          component={Link}
-                          to="/home"
-                        >
-                          Get Started
-                        </Button>
-                      </div>
+                        <i
+                          className="fab fa-microsoft"
+                          style={{ fontSize: "20px" }}
+                        />&nbsp;&nbsp;Microsoft Office 365 Account
+                      </Button>
+                      : <Button
+                      color="danger"
+                      simple
+                      disabled
+                    >
+                      <i
+                        className="fas fa-exclamation-triangle"
+                        style={{ fontSize: "20px" }}
+                      />
+                    </Button>
+                    }
                     </div>
-                  </Paper>
-                </Grid>
+                  </div>
+                </Paper>
               </Grid>
             </Grid>
-          </Grid>
+          </GridContainer>
         </div>
       </div>
     );
