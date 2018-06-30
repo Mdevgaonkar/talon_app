@@ -20,6 +20,10 @@ const baseStyle = theme => ({
       width: `calc(100% - ${drawerWidth}px)`
     }
   },
+  progress: {
+    margin: theme.spacing.unit * 2,
+    color: primaryColor
+  },
   menuButton: {
     marginLeft: -12,
     marginRight: 20
