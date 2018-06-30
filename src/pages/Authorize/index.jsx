@@ -90,14 +90,23 @@ class Authorize extends React.Component {
                     >
                       Continue with
                     </Typography>
+                    </div>
                     <div className={classes.socialLine}>
                     
                     {
                       this.state.auth===false ? 
                     
+                      <div className={classes.salutation}>
+                    <Typography
+                      variant="subheading"
+                      color="inherit"
+                      align="center"
+                    >
+                      Continue with
+                    </Typography>
                       <Button
                         href={this.state.signInUrl}
-                        target="_blank"
+                        // target="_blank"
                         color="microsoft"
                         // onClick={e => e.preventDefault()}
                       >
@@ -106,7 +115,17 @@ class Authorize extends React.Component {
                           style={{ fontSize: "20px" }}
                         />&nbsp;&nbsp;Microsoft Office 365 Account
                       </Button>
-                      : <Button
+                      </div>
+                      : 
+                      <div className={classes.salutation}>
+                    <Typography
+                      variant="subheading"
+                      color="inherit"
+                      align="center"
+                    >
+                      Something went wrong!! Please Try again Later.
+                    </Typography>
+                      <Button
                       color="danger"
                       simple
                       disabled
@@ -116,9 +135,10 @@ class Authorize extends React.Component {
                         style={{ fontSize: "20px" }}
                       />
                     </Button>
+                    </div>
                     }
                     </div>
-                  </div>
+                  
                 </Paper>
               </Grid>
             </Grid>
