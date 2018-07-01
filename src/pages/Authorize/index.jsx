@@ -4,10 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import authStyle from "./authorizeStyles";
-import { Typography, Card, Icon } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import TextField from "@material-ui/core/TextField";
-import IconButton from "../../components/CustomButtons/IconButton";
+import { Typography, Card } from "@material-ui/core";
 import Button from "../../components/CustomButtons/Button";
 
 import image from "../../assets/img/b2.jpg";
@@ -19,31 +16,37 @@ import { getAuth } from "../../helpers/auth";
 class Authorize extends React.Component {
   state = {
     auth: false,
-    signInUrl: '',
-    accessToken: '',
-    user: ''
+    signInUrl: "",
+    accessToken: "",
+    user: ""
   };
 
   componentDidMount = async () => {
-    let authObj =await  getAuth();
-    if (authObj.auth===false) {
+    let authObj = await getAuth();
+    if (authObj.auth === false) {
       //auth false
-      this.setState({auth: false});
-      this.setState({signInUrl: `${authObj.signInUrl}`});
-    } else if(authObj.auth === true){
-      this.setState({auth: true});
-      this.setState({accessToken: authObj.accessToken});
-      this.setState({user: authObj.user});
+      this.setState({ auth: false });
+      this.setState({ signInUrl: `${authObj.signInUrl}` });
+    } else if (authObj.auth === true) {
+      this.setState({ auth: true });
+      this.setState({ accessToken: authObj.accessToken });
+      this.setState({ user: authObj.user });
+      // console.log('AUTH-1', this.state.auth);
       const { history } = this.props;
-      history.push("/home");
-    }else {
-      this.setState({auth: 'error'});
-      this.setState({signInUrl: 'Some Error Occured Please Retry!'});
+      history.push({
+        pathname: "/home",
+        state: {
+          auth: true
+        }
+      });
+    } else {
+      this.setState({ auth: "error" });
+      this.setState({ signInUrl: "Some Error Occured Please Retry!" });
     }
   };
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
     return (
       <div>
         <div
@@ -82,63 +85,47 @@ class Authorize extends React.Component {
                     </Typography>
                   </Card>
 
-                  <div className={classes.salutation}>
-                    <Typography
-                      variant="subheading"
-                      color="inherit"
-                      align="center"
-                    >
-                      Continue with
-                    </Typography>
-                    </div>
-                    <div className={classes.socialLine}>
-                    
-                    {
-                      this.state.auth===false ? 
-                    
+                  <div className={classes.salutation} />
+                  <div className={classes.socialLine}>
+                    {this.state.auth === false ? (
                       <div className={classes.salutation}>
-                    <Typography
-                      variant="subheading"
-                      color="inherit"
-                      align="center"
-                    >
-                      Continue with
-                    </Typography>
-                      <Button
-                        href={this.state.signInUrl}
-                        // target="_blank"
-                        color="microsoft"
-                        // onClick={e => e.preventDefault()}
-                      >
-                        <i
-                          className="fab fa-microsoft"
-                          style={{ fontSize: "20px" }}
-                        />&nbsp;&nbsp;Microsoft Office 365 Account
-                      </Button>
+                        <Typography
+                          variant="subheading"
+                          color="inherit"
+                          align="center"
+                        >
+                          Continue with
+                        </Typography>
+                        <Button
+                          href={this.state.signInUrl}
+                          // target="_blank"
+                          color="microsoft"
+                          // onClick={e => e.preventDefault()}
+                        >
+                          <i
+                            className="fab fa-microsoft"
+                            style={{ fontSize: "20px" }}
+                          />&nbsp;&nbsp;Microsoft Office 365 Account
+                        </Button>
                       </div>
-                      : 
+                    ) : (
                       <div className={classes.salutation}>
-                    <Typography
-                      variant="subheading"
-                      color="inherit"
-                      align="center"
-                    >
-                      Something went wrong!! Please Try again Later.
-                    </Typography>
-                      <Button
-                      color="danger"
-                      simple
-                      disabled
-                    >
-                      <i
-                        className="fas fa-exclamation-triangle"
-                        style={{ fontSize: "20px" }}
-                      />
-                    </Button>
-                    </div>
-                    }
-                    </div>
-                  
+                        <Typography
+                          variant="subheading"
+                          color="inherit"
+                          align="center"
+                        >
+                          Something went wrong!! Please Try again Later.
+                        </Typography>
+                        <Button color="danger" simple disabled>
+                          <i
+                            className="fas fa-exclamation-triangle"
+                            style={{ fontSize: "20px" }}
+                          />
+                        </Button>
+                      </div>
+                    )}
+                  </div>
                 </Paper>
               </Grid>
             </Grid>

@@ -1,20 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { Typography, Card, Icon } from "@material-ui/core";
+import { Typography, Card } from "@material-ui/core";
 
 import authStyle from "../Authorize/authorizeStyles";
 
-import TextField from "@material-ui/core/TextField";
-
 // custom components
-import IconButton from "../../components/CustomButtons/IconButton";
-import Button from "../../components/CustomButtons/Button";
 import GridContainer from "../../components/Grid/GridContainer";
 
 // images
@@ -43,21 +38,36 @@ class AuthHandler extends React.Component {
       //auth false
       this.setState({ auth: false });
       //   this.setState({signInUrl: `${authObj.signInUrl}`});
-      history.replace("/");
+      history.replace({
+        pathname: "/",
+        state: {
+          auth: false
+        }
+      });
     } else if (authObj.auth === true) {
       this.setState({ auth: true });
       this.setState({ accessToken: authObj.accessToken });
       this.setState({ user: authObj.user });
-      history.push("/home");
+      history.push({
+        pathname: "/home",
+        state: {
+          auth: true
+        }
+      });
     } else {
       this.setState({ auth: "error" });
       this.setState({ signInUrl: "Some Error Occured Please Retry!" });
-      history.replace("/");
+      history.replace({
+        pathname: "/",
+        state: {
+          auth: false
+        }
+      });
     }
   };
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
 
     return (
       <div>
