@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const drawerListItems = [
   { path: "/home", name: "Dashboard", icon: "dashboard" },
-  { path: "/inbox", name: "Inbox", icon: "inbox" }
+  // { path: "/inbox", name: "Inbox", icon: "inbox" }
 ];
 
 const no_underine = {
