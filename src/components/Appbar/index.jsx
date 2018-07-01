@@ -41,7 +41,7 @@ class Appbar extends React.Component {
               {this.state.title}
             </Typography>
             {this.props.children}
-            <AuthButtons auth={auth} />
+            <AuthButtons auth={auth} history = {this.props.history} />
           </Toolbar>
         </AppBar>
       </div>
@@ -52,7 +52,8 @@ class Appbar extends React.Component {
 Appbar.propTypes = {
   classes: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  auth: PropTypes.bool.isRequired
+  auth: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Appbar);

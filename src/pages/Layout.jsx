@@ -13,7 +13,6 @@ import Appbar from "../components/Appbar";
 import { sidebarListItems } from "../components/sidebarListItems";
 
 import baseStyle from "../assets/jss/baseStyle";
-import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 class Layout extends React.Component {
@@ -37,10 +36,10 @@ class Layout extends React.Component {
         <div className={classes.toolbar}>
           <Link className={classes.toolbartitle} to="/" style={{ textDecoration: 'none' }} >
             <Typography variant="title" color="inherit">
-              Brand Name
+              Mail Talon
             </Typography>
           </Link>
-          <Typography className={classes.anchor} variant="caption">Brand caption</Typography>
+          {/* <Typography className={classes.anchor} variant="caption">Brand caption</Typography> */}
         </div>
       </div>
         <Divider />
@@ -52,7 +51,7 @@ class Layout extends React.Component {
     return (
       <div className={classes.root}>
         <div>
-          <Appbar title ={this.state.title} handleDrawerToggle={this.handleDrawerToggle} auth={this.state.auth}>
+          <Appbar title ={this.state.title} history={this.props.history} handleDrawerToggle={this.handleDrawerToggle} auth={this.state.auth}>
           </Appbar>
           <Hidden mdUp>
             <Drawer
@@ -96,7 +95,8 @@ Layout.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  auth: PropTypes.bool.isRequired
+  auth: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default withStyles(baseStyle, { withTheme: true })(Layout);

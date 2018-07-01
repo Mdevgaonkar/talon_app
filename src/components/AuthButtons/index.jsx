@@ -7,6 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import { logout } from "../../helpers/auth";
 
 import baseStyle from "../../assets/jss/baseStyle";
 
@@ -22,8 +23,12 @@ class AuthButtons extends React.Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = () => {
+  handleClose = (src_btn) => {
     this.setState({ anchorEl: null });
+    
+    if (src_btn === "logout") {
+      logout(this.props.history);
+    }
   };
 
   render() {
@@ -57,13 +62,11 @@ class AuthButtons extends React.Component {
               open={open}
               onClose={this.handleClose}
             >
-              <MenuItem onClick={this.handleClose} component={Link} to="/login">
-                Profile
-              </MenuItem>
               <MenuItem
-                onClick={this.handleClose}
-                component={Link}
-                to="/logout"
+                id="logout"
+                onClick={this.handleClose.bind(null, 'logout')}
+                // component={Link}
+                // to="/"
               >
                 Logout
               </MenuItem>
@@ -87,7 +90,8 @@ class AuthButtons extends React.Component {
 
 AuthButtons.propTypes = {
   classes: PropTypes.object.isRequired,
-  auth: PropTypes.bool.isRequired
+  auth: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(AuthButtons);
