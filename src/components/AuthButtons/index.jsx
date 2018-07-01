@@ -23,9 +23,9 @@ class AuthButtons extends React.Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = (src_btn) => {
+  handleClose = src_btn => {
     this.setState({ anchorEl: null });
-    
+
     if (src_btn === "logout") {
       logout(this.props.history);
     }
@@ -64,7 +64,7 @@ class AuthButtons extends React.Component {
             >
               <MenuItem
                 id="logout"
-                onClick={this.handleClose.bind(null, 'logout')}
+                onClick={this.handleClose.bind(null, "logout")}
                 // component={Link}
                 // to="/"
               >
