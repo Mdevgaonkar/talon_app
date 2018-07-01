@@ -2,44 +2,66 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 // Material-ui components
-import Typography from "@material-ui/core/Typography";
+// none
 
 // icons
 import InfoOutline from "@material-ui/icons/InfoOutline";
 import LocalOffer from "@material-ui/icons/LocalOffer";
 
 //Custom Components
+import { redirectToLogin, setAuth } from "../../helpers/auth";
 import Card from "../../components/Card/Card.jsx";
-import CardBody from "../../components/Card/CardBody.jsx";
+
 import CardHeader from "../../components/Card/CardHeader";
 import CardFooter from "../../components/Card/CardFooter";
 import CardIcon from "../../components/Card/CardIcon";
 import GridItem from "../../components/Grid/GridItem";
 import GridContainer from "../../components/Grid/GridContainer";
-import Button from "../../components/CustomButtons/Button";
-
-// import GridContainer from "../../components/Grid/GridContainer";
 
 import Layout from "../Layout.jsx";
 
 import HomeStyles from "./HomeStyles.jsx";
 
 // images
-import image from "../../assets/img/b2.jpg";
+//none
 
 class Home extends React.Component {
   state = {
-    auth: true
+    auth: false
   };
 
+  constructor(props) {
+    super(props);
+    this.state = { auth: setAuth(props) };
+    // this.setAuth();
+  }
+
+  // setAuth = () => {
+  //   if (this.props.location.state !== undefined)
+  //     if ("auth" in this.props.location.state) {
+  //       // console.log('AUTH-1.5', this.props.location.state.auth);
+  //       this.state = { auth: this.props.location.state.auth };
+  //       // console.log('AUTH-1.6', this.state.auth);
+  //       return true;
+  //     }
+  //   return false;
+  // };
+
   render() {
-    const { classes, theme } = this.props;
-    // const image = "assets/img/b2.jpg";
+    const { classes, history } = this.props;
+    const { auth } = this.state;
+    // console.log('AUTH-3', auth);
+
+    if (!auth) {
+      return redirectToLogin(history);
+    }
+
     return (
       <Layout
         drawerItemSelected="Dashboard"
         title="Dashboard"
-        auth={this.state.auth}
+        auth={auth}
+        history={history}
       >
         <GridContainer>
           <GridItem xs={12} sm={6} md={3}>
@@ -59,58 +81,6 @@ class Home extends React.Component {
               </CardFooter>
             </Card>
           </GridItem>
-
-          <GridItem xs={12} sm={12} md={4}>
-            <Card>
-              <CardHeader color="primary">
-                <h4 className={classes.cardTitleDarkBg}>Types of Buttons</h4>
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Card title</h4>
-                <Typography>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Typography>
-                <GridItem xs={12} sm={4} md={4}>
-                  <Button simple color="microsoft">
-                    <i
-                      className="fab fa-microsoft"
-                      style={{ fontSize: "20px" }}
-                    />&nbsp;&nbsp;Connect with microsoft
-                  </Button>
-                </GridItem>
-                <GridItem xs={12} sm={4} md={3}>
-                  <Button simple color="twitter">
-                    <i
-                      className="fab fa-twitter"
-                      style={{ fontSize: "20px" }}
-                    />&nbsp; Connect with Twitter
-                  </Button>
-                </GridItem>
-              </CardBody>
-            </Card>
-          </GridItem>
-          {/* </GridContainer>
-        <GridContainer> */}
-          <GridItem xs={12} sm={12} md={5}>
-            <Card>
-              <img
-                style={{ height: "180px", width: "100%", display: "block" }}
-                className={classes.imgCardTop}
-                src={image}
-                alt="Card-img-cap"
-              />
-              <CardBody>
-                <h4 className={classes.cardTitle}>Card title</h4>
-                <Typography>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Typography>
-
-                <Button color="primary">Do something</Button>
-              </CardBody>
-            </Card>
-          </GridItem>
         </GridContainer>
       </Layout>
     );
@@ -118,8 +88,7 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(HomeStyles, { withTheme: true })(Home);
