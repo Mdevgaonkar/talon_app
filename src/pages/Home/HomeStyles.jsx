@@ -1,12 +1,21 @@
-import baseStyle, { imagesStyles } from "../../assets/jss/baseStyle";
-
 const HomeStyles = {
-  ...baseStyle,
-  ...imagesStyles,
+  stats: {
+    color: "#999999",
+    display: "inline-flex",
+    fontSize: "12px",
+    lineHeight: "22px",
+    "& svg": {
+      top: "4px",
+      width: "16px",
+      height: "16px",
+      position: "relative",
+      marginRight: "3px"
+    }
+  },
   cardCategory: {
     color: "#999999",
     margin: "0",
-    fontSize: "14px",
+    fontSize: "16px",
     marginTop: "0",
     paddingTop: "10px",
     marginBottom: "0"
@@ -14,7 +23,7 @@ const HomeStyles = {
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
     margin: "0",
-    fontSize: "14px",
+    fontSize: "16px",
     marginTop: "0",
     marginBottom: "0"
   },
