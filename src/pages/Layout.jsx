@@ -33,15 +33,19 @@ class Layout extends React.Component {
     const drawer = (
       <div>
         <div className={classes.toolbarIe11}>
-        <div className={classes.toolbar}>
-          <Link className={classes.toolbartitle} to="/" style={{ textDecoration: 'none' }} >
-            <Typography variant="title" color="inherit">
-              Mail Talon
-            </Typography>
-          </Link>
-          {/* <Typography className={classes.anchor} variant="caption">Brand caption</Typography> */}
+          <div className={classes.toolbar}>
+            <Link
+              className={classes.toolbartitle}
+              to="/"
+              style={{ textDecoration: "none" }}
+            >
+              <Typography variant="title" color="inherit">
+                Mail Talon
+              </Typography>
+            </Link>
+            {/* <Typography className={classes.anchor} variant="caption">Brand caption</Typography> */}
+          </div>
         </div>
-      </div>
         <Divider />
         <MenuList>{sidebarListItems(this.props.drawerItemSelected)}</MenuList>
         <Divider />
@@ -51,8 +55,12 @@ class Layout extends React.Component {
     return (
       <div className={classes.root}>
         <div>
-          <Appbar title ={this.state.title} history={this.props.history} handleDrawerToggle={this.handleDrawerToggle} auth={this.state.auth}>
-          </Appbar>
+          <Appbar
+            title={this.state.title}
+            history={this.props.history}
+            handleDrawerToggle={this.handleDrawerToggle}
+            auth={this.state.auth}
+          />
           <Hidden mdUp>
             <Drawer
               variant="temporary"
