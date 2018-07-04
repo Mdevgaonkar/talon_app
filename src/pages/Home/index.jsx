@@ -47,7 +47,7 @@ class Home extends React.Component {
       >
         <GridContainer>
           <GridItem xs={12} sm={6} md={3}>
-            <StatWidget />
+            <StatWidget infoUrl = "http://localhost:5000/piexpo" />
           </GridItem>
         </GridContainer>
       </Layout>

@@ -14,14 +14,67 @@ import CardFooter from "../../components/Card/CardFooter";
 import CardIcon from "../../components/Card/CardIcon";
 
 import HomeStyles from "../../pages/Home/HomeStyles";
+import Axios from "axios";
 
 // images
 //none
+
+
+
 
 class InfoWidget extends React.Component {
   state = {
     upToDate: -1 //0 no 1 yes -1 inProgress
   };
+
+  selfUpdateStat= async (method,url)=> {
+    this.setState({
+      upToDate:  -1 //0 no 1 yes -1 inProgress
+    }); 
+    console.log("TRACK","Starting self update");
+    try {
+      const PI_logger = await Axios(url, {
+        method: `${method.toUpperCase()}`,
+        withCredentials: true,
+        credentials: "include"
+      });
+    let resp_obj =  {
+        data: PI_logger.data,
+        status: false,
+        debug: "Nothing to debug ¯\\_(ツ)_/¯"
+      };
+      console.log(resp_obj.data);
+      this.setState({
+        upToDate:  resp_obj.data.body.logStatus ? 1 : 0 //0 no 1 yes -1 inProgress
+      });      
+    } catch (error) {
+      console.log("ERROR", error);
+      let resp_obj = {
+        data: "Request Failed",
+        status: false,
+        debug: error
+      };
+      console.log(resp_obj);
+      this.setState({
+        upToDate: 0 //0 no 1 yes -1 inProgress
+      });
+    }
+  }
+  
+  componentDidMount = () => {
+    
+      console.log("TRACK");
+      
+      this.selfUpdateStat('GET', this.props.infoUrl);
+      setInterval(() => {
+        // this.selfUpdateStat.bind(null,['GET', this.props.infoUrl])
+        // console.log('Demo');
+        this.selfUpdateStat('GET', this.props.infoUrl);
+        
+      }, 1000 * 60 * 1);
+    
+  }
+
   render() {
     const { classes } = this.props;
     const { upToDate } = this.state;
@@ -31,8 +84,8 @@ class InfoWidget extends React.Component {
           <CardIcon color="danger">
             <InfoOutline />
           </CardIcon>
-          <p className={classes.cardCategory}>Fixed Issues</p>
-          <h3 className={classes.cardTitle}>75</h3>
+          <p className={classes.cardCategory}>Production Issues Tracker</p>
+          {/* <h3 className={classes.cardTitle}>75</h3> */}
         </CardHeader>
         <CardFooter stats>
           <div className={classes.stats}>
@@ -52,7 +105,8 @@ class InfoWidget extends React.Component {
                 style={{ color: "#4caf50", fontSize: "22px" }}
               />
             )}
-            &nbsp;&nbsp;Tracked from Github
+            &nbsp;&nbsp;Tracked from Outlook 365
+            
           </div>
         </CardFooter>
       </Card>
@@ -61,7 +115,9 @@ class InfoWidget extends React.Component {
 }
 
 InfoWidget.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  infoUrl:PropTypes.string.isRequired
+  // infoMethod:PropTypes.object.isRequired,
 };
 
 export default withStyles(HomeStyles, { withTheme: true })(InfoWidget);
